@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Quickly make a .gitignore suited for you project
+# Author Mikkel Birkeland
+
+# Usage:
+# myignore java intellij
+# This will go to gitignore.io and fetch the complete
+# .gitignore using curl. It will be output as a .gitinore
+# in the current folder.
+
+
+URL="https://gitignore.io/api/"
+COUNTER=0
+NOCOMMA="$#"-1
+
+for var in "$@"
+do
+   if [[ $COUNTER -eq $NOCOMMA ]]; then
+      URL+="${var}"
+   else
+      URL+="${var},"
+   fi
+done
+
+curl $URL -o .gitignore 
