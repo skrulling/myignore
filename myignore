@@ -14,6 +14,7 @@ URL="https://gitignore.io/api/"
 COUNTER=0
 NOCOMMA="$#"-1
 
+printf "Fetching the .gitignore..\n\n"
 for var in "$@"
 do
    if [[ $COUNTER -eq $NOCOMMA ]]; then
@@ -24,3 +25,12 @@ do
 done
 
 curl $URL -o .gitignore 
+
+printf "Download complete! .gitignore was created in current directory\n\n"
+
+# Checking for errors
+
+if grep -q ERROR .gitignore
+then
+	grep ERRO .gitignore
+fi
