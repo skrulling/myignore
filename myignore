@@ -30,7 +30,10 @@ printf "Download complete! .gitignore was created in current directory\n\n"
 
 # Checking for errors
 
-if grep -q ERROR .gitignore
-then
-	grep ERRO .gitignore
-fi
+for var in "$@"
+do
+	if grep -q "ERROR: ${var}" .gitignore; then
+		grep "ERROR: ${var}" .gitignore
+		printf "\n"
+	fi
+done
