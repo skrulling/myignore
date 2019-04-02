@@ -24,7 +24,9 @@ do
    fi
 done
 
-curl $URL -o .gitignore 
+curl $URL -o .gitignoreTemp
+cat .gitignoreTemp >> .gitignore
+rm .gitignoreTemp
 
 printf "Download complete! .gitignore was created in current directory\n\n"
 
